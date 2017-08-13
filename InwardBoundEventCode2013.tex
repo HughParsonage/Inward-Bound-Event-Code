@@ -1,0 +1,1453 @@
+\documentclass[12pt]{report}
+\usepackage{amsmath}
+\usepackage{float}
+\usepackage{parskip}
+\usepackage{makeidx}\makeindex
+\usepackage{txfonts}
+\usepackage[table]{xcolor}
+\usepackage{longtable}
+\usepackage{appendix}
+\usepackage{nameref}
+\usepackage[explicit]{titlesec}
+\addtolength{\textwidth}{0cm}
+\addtolength{\textheight}{1cm}
+    \titleformat{\section}%
+            {\Large\bfseries}% format
+            {\llap{% label
+               \thesection\hskip 9pt}#1}%
+            {0pt}% horizontal sep
+            {}% before
+
+    \titleformat{\subsection}%
+            {\bfseries}% format
+            {\llap{% label
+               \thesubsection\hskip 9pt}#1}%
+            {0pt}% horizontal sep
+            {}% before
+%\usepackage[compact]{titlesec}
+\usepackage{remreset}
+                \makeatletter
+                    \@addtoreset{chapter}{part}
+                    \@removefromreset{section}{chapter}
+                \makeatother
+                %
+            \renewcommand\thesection{\arabic{section}}
+\usepackage{environ}
+    \makeatletter
+    \NewEnviron{fenumerate}
+      {\setbox0=\vbox{\enumerate\BODY\endenumerate\expandafter}%
+       \expandafter\def\expandafter\@tempfenum\expandafter{\the\value{\@enumctr}}%
+       \vspace{-6pt}
+       \begin{enumerate}
+         \ifnum\@tempfenum=\@ne\expandafter\def\csname label\@enumctr\endcsname{}\fi
+         \BODY
+       \end{enumerate}}
+    \makeatother
+\usepackage[hypertexnames=false,colorlinks,pdftex,linkcolor=blue]{hyperref}
+    \makeatletter
+     \newcommand{\nop}[1]{\Hy@raisedlink{\hypertarget{#1}{}}}
+    \makeatother
+    \newcommand{\hyplink}[1]{\hyperlink{#1}{{#1}}}
+
+\makeatletter
+\def\thickhrulefill{\leavevmode \leaders \hrule height 1pt\hfill \kern \z@}
+\renewcommand{\maketitle}{\begin{titlepage}%
+    \let\footnotesize\small
+    \let\footnoterule\relax
+    \parindent \z@
+    \reset@font
+    \null
+    \vskip 10\p@
+    \hbox{\mbox{\hspace{3em}}%
+      \vrule depth 0.6\textheight%
+      \mbox{\hspace{2em}}
+      \vbox{
+        \vskip 20\p@
+        \begin{flushleft}
+          \Large \@author \par
+        \end{flushleft}
+        \vskip 80\p@
+        \begin{flushleft}
+          \huge \bfseries \@title \par
+        \end{flushleft}
+        \vfil
+        }}
+    \null
+  \end{titlepage}%
+  \setcounter{footnote}{0}%
+}
+\makeatother
+                \title{Inward Bound Event Code 2013}
+                \author{Final}
+
+\newcommand{\defi}[1]{\nop{#1}{\textbf{\emph{#1}}}\index{#1}}
+
+\renewcommand\labelenumi{(\arabic{enumi})}
+\renewcommand\labelenumiii{(\roman{enumiii})}
+\renewcommand\labelenumiv{(\Alph{enumiv})}
+    \makeatletter
+    \renewcommand{\p@enumii}{\theenumi)(}
+    \makeatother
+
+%% A
+\newcommand\approach{\hyplink{approach}}
+\newcommand\amended{%\marginpar{\textbf{amend.}}
+}
+
+
+%% C
+\newcommand{\Captain}{\hyplink{Coach}}
+\newcommand{\chiefjudge}{\hyplink{chief judge}}
+\newcommand{\Coach}{\hyplink{Coach}}\newcommand{\xCaptain}{Coach}
+\newcommand{\competitor}{\hyplink{competitor}}
+\newcommand{\course}{\hyplink{course}}
+\newcommand{\CourseSetter}{\hyplink{course setter}}
+\newcommand{\coursearea}{\hyplink{course area}}
+
+%% D
+\newcommand\dropoffpoint{drop-off point}
+%\newcommand\divv{\hyplink{div}}
+
+%% E
+\newcommand{\eg}[1]{{\small
+\begin{tabular}
+  {p{0.3cm}p{11.75cm}}
+  \emph{e.g.}&#1
+\end{tabular}
+}}
+\newcommand\Endpoint{end point}
+\newcommand\Event{event}
+\newcommand\exresident{\hyplink{ex-resident}}
+\newcommand\exemptitem{\hyplink{exempt item}}
+
+% F
+\newcommand{\finishline}{\hyplink{finish line}}
+
+% L
+\newcommand{\LeadDriver}{Lead Driver}
+
+%  N
+\newcommand{\note}[1]{{\small%\vspace{-12pt}
+\begin{tabular}
+  {p{0.75cm}p{11.25cm}}
+  \textbf{Note:}&#1
+\end{tabular}
+%\vspace{-12pt}
+}}
+
+% O
+\newcommand{\official}{\hyplink{official}}
+
+%P
+\newcommand\Penalty[1]{\vspace{6pt}{\small \textbf{Penalty:~~}#1}\vspace{10pt}}
+\newcommand\President{\hyplink{President}}\newcommand\xPresident{President}
+\newcommand{\prohibiteditem}{\hyplink{prohibited item}}
+\newcommand{\prohibitedarea}{\hyplink{prohibited area}}
+
+%% R
+\newcommand{\race}{\hyplink{race}}
+\newcommand{\RaceDirector}{\hyplink{Race Director}}
+\newcommand{\AssistantRaceDirector}{\hyplink{Assistant Race Director}}
+\newcommand{\Referee}{\hyplink{Referee}}
+\newcommand{\residence}{\hyplink{residence}}
+
+% S
+\newcommand{\scoutingperiod}{\hyplink{scouting period}}
+\newcommand{\scrutineeringarea}{\hyplink{scrutineering area}}
+\newcommand{\spectator}{\hyplink{spectator}}
+\newcommand{\squad}{\hyplink{squad}}
+
+
+
+% T
+\newcommand{\team}{\hyplink{team}}
+\newcommand{\TeamEnvelope}{Team Envelope}
+\newcommand{\Tribunal}{\hyplink{Tribunal}}
+% V
+\newcommand{\ViceCaptain}{\hyplink{Vice-Captain}}
+\newcommand{\VicePresident}{\hyplink{Vice-President}}
+
+% \xCaptain etc see \Captain etc
+%Typesetting parameters
+\hyphenpenalty=10000
+\clubpenalty=9996
+\widowpenalty=9999
+\brokenpenalty=4991
+\predisplaypenalty=10000
+\postdisplaypenalty=1549
+\displaywidowpenalty=160
+
+\begin{document}
+  \maketitle\setcounter{page}{2}
+  \normalsize
+  \tableofcontents
+  %
+  %
+  \part{Rules of Inward Bound}
+  \chapter{Preliminary}
+  \section{The {Race Director}}
+  \begin{fenumerate}\item
+  There is to be a \defi{Race Director}, who shall be the principal officer of  Inward Bound.
+  \end{fenumerate}
+  \section{Officials}
+  \begin{fenumerate}\item
+  The \RaceDirector\ may appoint other officers or delegates, collectively called \defi{official}s, and may specify or limit their powers within this Code.
+  \end{fenumerate}
+  \section{Coaches}
+  \begin{enumerate}
+    \item Each competing residence is to nominate a resident of that residence as its \defi{Coach}.
+    \item The \Captain\ is responsible for his or her squad's ability to complete the race within the rules of the event.
+    \item To remove doubt, the \Captain\ does not have to be a competitor.\label{enum:CaptainNonCompetitor}
+
+    \note{It is expected that the \Captain\ will be a competitor. Provision \thesection(\ref{enum:CaptainNonCompetitor}) above is intended to ensure that the temporary or sudden inability of a \Captain\ to participate in the event does not affect his or her status or responsibilities under this Code.}
+  \end{enumerate}
+  \section{Spectators}
+  \begin{fenumerate}
+    \item A \defi{spectator} is a resident or \exresident\ of a \residence\ who:
+    \begin{enumerate}
+      \item is not an official,
+      \item is not a \Captain,
+      \item is not a competitor, and
+      \item is travelling to the \Endpoint, is at the \Endpoint, is travelling from the \Endpoint, or is in the vicinity of competitors.
+    \end{enumerate}
+  \end{fenumerate}
+  \section{Presidents}
+  \begin{enumerate}
+    \item The \Coach\ shall nominate another member of their residence as the \defi{President} of that residence.
+
+    The \President\ shall ordinarily be the president of the elected student body for that residence or, if the president of that body is a competitor, his or her delegate. The \Captain\ must have confidence in the \President\ to influence the residence's \spectator s.
+    \item The \President\ of a residence is responsible for the conduct of \spectator s affiliated with that residence.
+    \item The \President\ may not compete in Inward Bound.
+    %\item The \President\ shall appoint a \defi{Vice-President}.
+  \end{enumerate}
+  \section{Reference to delegates of officials or designated person}
+  \begin{fenumerate}
+\item  If a provision of this Code states that an action is to be done by or to a specific official or designated person, the action may be done by or to a delegate of that official or designated person.
+\end{fenumerate}
+\section{The course}
+  \begin{fenumerate}
+  \item The \defi{course} is set by the \defi{course setter} and consists of:
+  \begin{enumerate}
+    \item an \Endpoint, and
+    \item \dropoffpoint s corresponding to each division
+  \end{enumerate}
+  \end{fenumerate}
+  \section{The course area}
+  \begin{fenumerate}
+    \item The \defi{course area} is the area covered by the Canberra $1:250\,000$ scale topographic map printed by Geoscience Australia.
+  \end{fenumerate}
+\section{Officials cannot be competitors}
+\begin{fenumerate}
+  \item The following persons cannot be \competitor s of Inward Bound.
+  \begin{enumerate}
+    \item the \RaceDirector
+    \item delegates of the \RaceDirector
+    \item the course setter
+    \item officials
+    \item members  of the \Tribunal
+  \end{enumerate}
+\end{fenumerate}
+  \section{Dictionary}
+  \defi{Inward Bound} means the yearly competition\\[12pt]
+  \defi{the event} means the particular competition of each year\\[12pt]
+  \defi{ex-resident} has the same meaning as in the Interhall Sports Organisation by-laws.\\[12pt]
+  The event is a competition between groups of runners from separate halls and colleges of the ANU. Each hall and college is called a \defi{residence}.\\[12pt]
+  Each runner is called a \defi{competitor}; each group of four runners is called a \defi{team}; and the collection of all \competitor s from a \residence\ is called the \defi{squad} of the \residence.
+  \\[12pt]
+  %Hence, the term \defi{subset} may be used to describe a \competitor\ within a \team, or a \team\ within a %\squad, etc. \defi{Superset} is the symmetric term.\\[12pt]
+  \defi{affiliated residence}, in relation to an offender, means the offending \residence\ or the \residence\ of the \Captain\ who entered the offending \competitor, \team, or \squad, or the \residence\ of the \President\ of the offending \spectator.
+  \chapter{Composition of Divisions}
+  \section{Divisions}
+  \begin{fenumerate}
+\item  The event consists of seven \defi{Division}s, with Division 1 being the most difficult and Division 7 being the least difficult.
+\item Each residence may field one and only one \team\ in each Division.
+\end{fenumerate}
+  %
+  %\begin{enumerate}
+  %  \item The event is a competition between groups of teams from separate halls and colleges of the ANU (``\defi{residence}s of the ANU'')
+  %  \item Each \residence\ may field one group of four runners to compete in each Division.
+  %  \item Each runner is called  a \defi{competitor}; each group is called a \defi{team}; and the collection of all \competitor s from a %\residence\ is called the \defi{squad} of that \residence.
+  %  \item A residence may not field more than one \team\ in a single Division.
+  %\end{enumerate}
+  \section{Roles of each competitor}
+  \begin{fenumerate}
+  \item Each \team\ consists of:
+  \begin{enumerate}
+    \item a Navigator,
+    \item an Assistant Navigator, and
+    \item two Scouts.
+  \end{enumerate}
+  \end{fenumerate}
+%  \section{Gender}
+%  The \squad\ of each residence shall contain at least three female competitors.
+  \section{Residency}
+  \begin{fenumerate} \item
+  The \squad\ of each residence shall contain no more than three \competitor s who are \exresident s or not residents of the residence.
+  \end{fenumerate}
+
+  %The \defi{course area} is the area within $x+5$\,km of the \Endpoint, where $x$ is the maximum of the outer radii for each Division as %described in section~\ref{sec:MandatoryBriefing} (Mandatory briefing).\\[12pt]
+  %{\small \emph{e.g.} if Division 1 is to be dropped between 65 and 75\,km from \Endpoint, Division 2 between 65 and 80\,km, and Division 3 %between 50 and 60\,km, then the course area is the area within 85\,km of \Endpoint.}
+  \chapter{Entry}
+  \section{Entry of a residence (Census date)}\label{sec:entryresidence}
+  \begin{enumerate}
+    \item No residence may compete in the \Event\ unless the \RaceDirector\ has received a valid application for entry into the \Event\ and the \RaceDirector\ has given approval for that residence to compete in the \Event.
+    \item An application for entry of a residence:
+    \begin{enumerate}
+        \item shall be in writing;
+      \item shall specify that it is made under this section;
+      \item shall specify the \Coach\ and \President\ of the residence, including a valid address (such as a postal or email address) that communications under this Code are to be sent;\label{enum:CoachEmail}
+      \item shall specify the Divisions the residence will enter;\label{sec:CensusDivision}
+
+      \note{There is no penalty for failing to compete in a Division specified under this provision, \emph{i.e.} you can enter a subset}
+      \item shall be lodged no later than the census date of the year of the \Event; and
+      \item shall be accompanied by such fee as the \RaceDirector\ may specify.\amended
+    \end{enumerate}
+    \item The \defi{census date} shall be set by the \RaceDirector\ but must be earlier than the entry closing date.
+  \end{enumerate}
+  \section{Entry of teams (Closing date)}\label{sec:EntryCompetitorDivision}
+  \begin{enumerate}
+    \item A \team\ may not compete in a Division unless:
+     \begin{enumerate}
+     \item  the \RaceDirector\ has received a valid application for entry of that \team\,
+     \item  the \RaceDirector\ has approved that \team\ for entry into that Division, and
+     \item the residence has been approved under section~\ref{sec:entryresidence} (\nameref{sec:entryresidence}) to enter that Division
+         \end{enumerate}
+    \item An application for entry of a \team\ into a Division:
+    \begin{enumerate}
+      \item shall be in writing;
+      \item shall specify that it is made under this section;
+      \item shall identify each relevant \competitor's:
+      \begin{enumerate}
+        \item name,
+        \item gender,
+        \item date of birth, and
+        \item residency (i.e. whether they are a resident or ex-resident),
+      \end{enumerate}
+      as well as a statement in support of their individual athletic fitness;
+      \item shall name the \team's Navigator and Assistant Navigator and shall include a statement supporting their navigational ability or experience;
+      \item shall specify the Division;
+       \item shall be lodged no later than noon on the last Sunday prior to the \Event;
+      \item shall be accompanied by such fee as the \RaceDirector\ may specify; and
+      \item shall be signed by the \team's residence's \Coach.
+    \end{enumerate}
+    \note{An email from the \Coach's email address as specified in section~ \ref{sec:entryresidence}(\ref{enum:CoachEmail}) shall be regarded as having been signed by the \Coach.}
+    \item Multiple applications under this section may be lodged jointly if from the same residence.
+  \end{enumerate}
+  \section{Late application for entry}
+  \begin{fenumerate}
+    \item The \RaceDirector\ may accept any late application or variation to an application under this Chapter at his or her absolute discretion.
+  \end{fenumerate}
+  \section{Decision by Race Director}%\amended
+  \begin{enumerate}
+    \item The \RaceDirector\ shall transmit his or her decision under this section within 72\,hours of receiving an application under a section of this chapter. A failure to comply with this subsection does not invalidate the decision.
+    \item Such a decision shall be in writing and addressed to the applying \Coach.
+    \item The \RaceDirector's decision shall be:
+     \begin{enumerate}
+     \item to approve the application; or
+     \item to require as a condition of approval or as a condition of further consideration of the application:
+      \begin{enumerate}
+      \item any applying \competitor\ or residence to undergo testing of athletic fitness or navigational ability, or
+       \item the residence's \Coach\ to make an additional statement in support of the application; or
+         \end{enumerate}
+         \item to refuse the application.
+     \end{enumerate}
+     \note{A decision to approve does not endorse or certify a residence, \team, or \competitor\ as fit or safe to compete in the \Event.}
+     \item The \RaceDirector's decision is final and conclusive.
+  \end{enumerate}
+  \chapter{Synopsis of the event}\label{chapter:Synopsis}
+  \section{Mandatory briefing}\label{sec:MandatoryBriefing}
+  \begin{enumerate}
+    \item The \RaceDirector\ shall inform the \Captain es of the date of the mandatory briefing for competitors.
+    %\item All competitors must be present at the briefing, except with the permission of the \RaceDirector.
+    \item At the conclusion of the mandatory briefing, the \RaceDirector\ shall specify for each Division the inner and outer radii of an annulus, centred at the \Endpoint, that contains the \dropoffpoint\ for that Division.
+
+        \eg{``The drop-off point for Division 3 is between 30\,km and 40\,km from the end point.''}
+    \item The \RaceDirector\ may at the mandatory briefing declare that equipment additional to Schedule~\ref{Sch:CompulsoryEquipment} is compulsory for the event.
+  \end{enumerate}
+  \section{Pre-Event scrutineering}\label{sec:PreEventScrutineering}
+  \begin{enumerate}
+    \item The \RaceDirector\ shall promulgate the time each Division is required to present for pre-event scrutineering.
+    \item The object of scrutineering is to ensure:
+    \begin{enumerate}
+      \item all competitors of a Division are assembled to be transported to the \dropoffpoint.
+      \item all competitors have all compulsory equipment, and
+      \item no competitor has any prohibited items.
+    \end{enumerate}
+    \item The \RaceDirector\ shall designate an area within ANU as the \defi{scrutineering area}.
+    \item No person may be within the scrutineering area during the scrutiny unless:
+    \begin{enumerate}
+      \item they are a competitor in a Division that is undergoing scrutineering
+      \item they are an scrutineer appointed by the \RaceDirector.
+    \end{enumerate}
+    %\item Pre-event scrutineering shall take place on a Friday.
+  \end{enumerate}
+  \section{Start of event}
+  \begin{fenumerate}
+    \item The \Event\ starts at the time the first Division is scheduled to present to pre-event scrutineering.
+    \item The \Event\ shall start on a Friday.
+  \end{fenumerate}
+  \section{Transport to the \dropoffpoint}
+  \begin{enumerate}
+    \item The \RaceDirector\ shall promulgate the time at which each Division shall be transported from scrutineering to the Division's \dropoffpoint.
+    \item The \RaceDirector\ will organize the transport of:
+    \begin{enumerate}
+     \item all \competitor s of each Division.
+     \item an official, called the Division's \LeadDriver,
+    \end{enumerate}
+     to the Division's \dropoffpoint.
+     \item All \competitor s will be blindfolded during the journey.\amended
+  \end{enumerate}
+  \section{The \dropoffpoint}
+  \begin{enumerate}
+    \item At each Division's \dropoffpoint, the Division's \LeadDriver\ shall assemble the Navigators participating in that Division.
+    \item When the \LeadDriver\ is satisfied each Navigator is present, the \LeadDriver\ shall serve on each Navigator:
+        \begin{enumerate}
+          \item the \TeamEnvelope\ corresponding to that Navigator's team, and
+          \item any other documentation, as maps or instructions as directed by the \RaceDirector.
+          \end{enumerate}
+          \amended
+  \end{enumerate}
+  \section{The \TeamEnvelope}
+  \begin{enumerate}
+    \item The \TeamEnvelope\ shall be a sealed envelope consisting of the envelope and its Contents.
+    \item The envelope shall have printed on it grid coordinates of the \Endpoint\ and other information as the \RaceDirector\ shall direct.
+    \item The Contents of the \TeamEnvelope\ shall contain such safety information as the \RaceDirector\ deems necessary including the locations of the \dropoffpoint s for each Division.
+  \end{enumerate}
+  \section{The race}
+  \begin{enumerate}
+    \item A period of time for each Division, called the \race, specifies the period of competition of the event.
+    \item Without limiting the generality of the above the \defi{race} will ordinarily be defined as beginning from the time at which the \LeadDriver\ serves on each \team's Navigator in a Division that \team's \TeamEnvelope\ until every team has either:
+        \begin{enumerate}
+          \item arrived at \Endpoint,
+          \item  withdrawn, or
+          \item been disqualified.
+        \end{enumerate}
+  \end{enumerate}
+  \section{Race to be performed on foot}
+  \begin{fenumerate}
+  \item The \race\ is to be performed on foot.
+  \end{fenumerate}
+  \section{Scouting}
+  \begin{enumerate}
+    \item After the \TeamEnvelope\ has been served on each Navigator of each team in the Division, a period of time, called the \defi{scouting period} commences.
+    \item The \scoutingperiod\ shall be:
+    \begin{enumerate}
+      \item for Divisions 1 to 3---40 minutes,
+      \item for other divisions---20 minutes.
+    \end{enumerate}
+    \item During the \scoutingperiod\ the Scouts of each \team\ are permitted to:
+    \begin{enumerate}
+    \item abandon compulsory equipment in Schedule~\ref{Sch:CompulsoryEquipment} that is not marked as compulsory for Scouts,
+    \item breach section \ref{sec:Separation} (Separating from \team),
+    \end{enumerate}
+    \item To remove doubt, a Scout may separate from the \team, return to other members of the \team, and separate again, without breaching this rule, provided the Scout returns to the other members of the \team\ during the \scoutingperiod\ and is not separate from the \team\ once the \scoutingperiod\ ends.
+    \item Each Navigator must, if requested, notify the \LeadDriver\ of their estimated position and their intended route before departing the \dropoffpoint.
+    \item The Scouts must return to the \dropoffpoint\ before the \scoutingperiod\ ends.
+  \end{enumerate}
+  \section{Goal of the event}
+  \begin{fenumerate}
+    \item The goal of the event is to score the highest number of points. See \nameref{appendix:scoring}.
+  \end{fenumerate}
+    \section{Control powers of officials}
+  \begin{enumerate}
+    \item The \RaceDirector\  and the \Referee, or their delegates, shall at any time during the race have the power to direct a team or a competitor:
+    \begin{enumerate}
+      \item to stop running
+      \item to stop and dwell at a location for a period of time or until directed to continue,
+      \item to identify their location and intended route,
+      \item to be transported to another location, whether further or closer to the end point,
+      \item to carry additional equipment,
+      \item to use continually or for a period specific equipment,
+      \item to abandon a route and run a different route,
+      \item to truthfully report the amount of water or food they are currently carrying,
+      \item to accept and carry without dumping additional water or food
+    \end{enumerate}
+    \item A direction must be recorded and the direction must be reported as soon as practicable to the  \RaceDirector\ and to the \Referee.
+  \end{enumerate}
+  \section{The \Endpoint}
+  \begin{enumerate}
+    \item The \RaceDirector\ or one of his or her delegates shall ensure that:
+    \begin{enumerate}
+      \item a designated and fenced corridor, open to the \coursearea\ at one end, called the \defi{approach}, is highly visible near the \Endpoint, and
+      \item a line, called the \defi{finish line}, is towards the closed end of the approach.
+    \end{enumerate}
+    \item A \team\ reaches the \Endpoint\ when the last \competitor\ of that \team\ crosses the finish line.
+    \item The \RaceDirector\ shall appoint officials, called \defi{judge}s, to be present at \Endpoint\ throughout the event.
+    \item The \RaceDirector\ shall appoint some judges to be \defi{chief judge}s and shall roster the judges so that at any time during the event one and only one chief judge is on duty at the \Endpoint.
+    \item The judges shall be responsible for determining:
+    \begin{enumerate}
+      \item the time at which \team s arrived at \Endpoint, including deciding whether a \team\ arrived before or after another \team,
+      \item whether each \team\ had compulsory equipment upon arrival at \Endpoint, and
+      \item whether each \team\ had any prohibited items.
+    \end{enumerate}
+    \item If the judges disagree about the order of arrival of two or more \team s at the \Endpoint, the chief judge shall conclusively adjudicate the final order of arrival or declare a dead-heat between \team s.
+    \item The judges shall have the power to search \competitor s and their belongings once they have crossed the \finishline.
+  \end{enumerate}
+  \section{Withdrawal}
+  \begin{enumerate}
+    \item A \team\ may withdraw from the event at any time during the \race.
+    \item The Navigator or other \competitor\ of a \team\ that has withdrawn must immediately:
+    \begin{enumerate}
+    \item if the withdrawal occurs during the \scoutingperiod---inform the \LeadDriver\ and follow his or her instructions;  or otherwise---
+        \item stop running,
+      \item open the \TeamEnvelope, and
+      \item follow the instructions therein.
+    \end{enumerate}
+    \item A \team\ that has withdrawn is not, by that reason alone, excused from any provision of this Code, unless the contrary intention appears.
+  \end{enumerate}
+  \section{Mandatory withdrawal}
+  \begin{fenumerate}
+    \item A \team\ must withdraw if a \competitor\ from that \team\ is disqualified, withdraws, or is otherwise unable to continue.
+\end{fenumerate}
+\chapter{Offences in training}
+\section{Training runs}
+\begin{enumerate}
+  \item[] A \defi{training run} is a run by a group of residents or \exresident s, not less than four, who  become \competitor s for that residence, taken principally for the purpose of improving athletic fitness or navigational experience relevant to Inward Bound.
+
+  \item[] In this chapter, the term \defi{significant training run} refers to:
+   \begin{enumerate}
+   \item training runs commonly known as ``mock IBs'' and
+   \item any training run satisfying at least two of the following criteria:
+  \begin{enumerate}
+    \item the run starts or finishes at a place outside ANU,
+    \item road vehicles are intended to be used to transport runners,
+    \item any part of the run takes place west of the Murrumbidgee River, outside the ACT, or otherwise outside the Canberra metropolitan area,
+    \item the run could reasonably be expected to finish after 2\,am.
+  \end{enumerate}
+  \end{enumerate}
+\end{enumerate}
+\section{Offences placing event in jeopardy}
+\begin{enumerate}
+  \item[] Any offence under chapter~\ref{chapter:EventJeopardy} (\nameref{chapter:EventJeopardy}) is also an offence punishable by the penalty specified there if it occurs during a training run, whether authorized by the \Coach\ or otherwise.
+\end{enumerate}
+\section{Other offences}
+\begin{fenumerate}
+  \item The following offences apply to training runs with the same punishment:
+  \begin{enumerate}
+    \item Section~\ref{sec:highways} (\nameref{sec:highways})
+    \item Section~\ref{sec:disobeyofficial} (\nameref{sec:disobeyofficial})
+  \end{enumerate}
+\end{fenumerate}
+\section{Not notifying Race Director of significant training runs}
+\newcommand\SIGtrainingrun{\hyplink{significant training run}}
+\begin{enumerate}
+  \item The \Coach\ must notify the \RaceDirector\ of the particulars of a \SIGtrainingrun\ 48 hours prior. Failure to do so is an offence.
+
+      \Penalty{12 point penalty for \residence\ (No maximum for aggravated offence)}
+  \item It is an aggravating factor to an offence under subsection \thesection(1) if the failure to notify was intended to harm the ability of the \Referee\ to make a successful prosecution.
+
+      \eg{A \Coach\ fails to notify because he believes a runner may enter a prohibited area, and he does not want the \Referee\ to be able to identify the residence responsible if a complaint is made.}
+
+    \note{To remove doubt, it is not a defence to \thesection(1) that the \Coach\ was unaware of the training run (such as being a spontaneous run by a \team)}
+  \item The \Coach\ must not conduct a \SIGtrainingrun\ in defiance of any direction by the \RaceDirector\ in general or in particular.
+
+  \Penalty{Disqualification of \squad}
+
+\end{enumerate}
+  \chapter{Offences placing event in jeopardy}\label{chapter:EventJeopardy}
+  \section{Entering private property without authority}
+  \begin{enumerate}
+    \item Subject to this section, a \team\ commits an offence if:\label{enum:EnterPrivateProperty}
+    \begin{enumerate}
+      \item a \competitor\ from that \team\ enters land that is private property, and
+      \item the \team\ has not been given specific permission by the \RaceDirector\ or the \Referee\ to enter that land.
+    \end{enumerate}
+    \Penalty{Disqualification of team plus 7 point penalty for \residence}
+    \item \hyplink{Absolute liability} applies to every element of \thesection(\ref{enum:EnterPrivateProperty}).
+    \item To remove doubt, it is not a sufficient defence that the \competitor\ or \team\ obtained permission from the property's owner or tenant.
+        \item A \squad\ commits an offence if two or more \team s from the \squad\ enter private property without authority.
+
+            \Penalty{Disqualification of \squad}
+    \item It is a defence to an offence under this section if the following conditions were satisfied at the time the trespass took place:
+        \begin{enumerate}
+          \item the competitor required urgent medical assistance either for himself or herself, another competitor, a spectator, or for any other person, and
+          \item the competitor had attempted to contact:
+          \begin{enumerate}
+            \item the \RaceDirector, or
+            \item emergency services
+          \end{enumerate}
+          and had either been unsuccessful or had been directed by emergency services to enter private property, and
+          \item the competitor or team believed entering private property was necessary for the good care of the person requiring medical assistance, and
+          \item the competitor or team entered with due care.
+
+
+
+        \end{enumerate}
+
+
+  \end{enumerate}
+  \section{Entering prohibited areas}
+  \begin{fenumerate}
+    \item A \team\ commits an offence if
+       a \competitor\ from that \team\ enters a \prohibitedarea.
+
+       \Penalty{Disqualification of \team\ plus 12 point penalty for residence.}
+    \item A \defi{prohibited area} is an area so designated by the \RaceDirector\ and may be an enclosure of private or public land, a locality, a road, or another geographic feature as the \RaceDirector\ may specify.
+
+  \end{fenumerate}
+  \section{Creating excessive noise}
+  \begin{fenumerate}
+    \item A \team\ must not create excessive noise nearby dwellings.
+
+    \Penalty{Disqualification of \team}
+  \end{fenumerate}
+  \section{Lighting fires}
+  \begin{fenumerate}
+    \item A \team\ must not light a fire.
+
+    \Penalty{Disqualification of \squad}
+  \end{fenumerate}
+  \section{Consuming alcohol}
+  \begin{fenumerate}
+    \item A \spectator\ or a \competitor\ must not:% consume or possess alcohol:
+    \begin{enumerate}
+    \item consume or possess alcohol at or near the \Endpoint; or
+    \item consume alcohol near the \scrutineeringarea.
+    \end{enumerate}
+
+    \Penalty{Disqualification of the \spectator\ or \competitor's \residence.}
+  \end{fenumerate}
+  \section{Actions otherwise illegal}
+  \begin{fenumerate}\item
+  A \competitor\ or \spectator\ must not commit an offence under NSW or ACT law. If the \Referee\ is satisfied that a \competitor\ or \spectator\ has committed an offence on the balance of probabilities, the \Referee\ may impose a penalty of disqualification on the affiliated \residence\ for the current and subsequent event, regardless of whether or not the charge is proved elsewhere.\end{fenumerate}
+  %
+  %
+  \chapter{Offences constituting unsafe conduct}
+  %
+  \section{Misrepresenting ability}
+  \begin{enumerate}
+    \item The \Captain\ of a \squad\ must not misrepresent the navigational ability or athletic fitness of any \competitor\ in that \squad\ to the \RaceDirector.
+
+        \Penalty{Disqualification of \residence\ in current and subsequent events}
+    \item The \Captain\ of a \squad\ must not enter a \team\ into a Division that is inappropriate given the \team's navigational ability, athletic fitness, and experience.
+
+       \Penalty{Disqualification of \residence\ from the Division in current and subsequent events}
+    \item To remove doubt, the \Captain\ is solely responsible for the conduct of his or her \competitor s.
+  \end{enumerate}
+  \section{Separation of competitors within a team}\label{sec:Separation}
+  \begin{enumerate}
+    \item A \competitor\ must not, during the \race, be more than 50\,m from another \competitor\ from his or her \team.
+
+        \Penalty{Disqualification of \team}
+    \item A \competitor\ must not continue to compete, run, walk, or the like, if another \competitor\ of the \competitor's \team\ has withdrawn or is unable to continue.\label{enum:SeparationAfterWithdrawal}
+
+        \Penalty{Disqualification of \team\ plus 12 point penalty for residence}
+    \item A \competitor\ or \team\ does not breach \thesection(\ref{enum:SeparationAfterWithdrawal}) if:
+    \begin{enumerate}
+      \item a \competitor\ from the \team\ has stopped and requires urgent assistance or is unable to continue, and
+      \item the \team\ has unsuccessfully attempted to contact the \RaceDirector, emergency services, and has followed the instructions in the \TeamEnvelope,
+      \item the \team\ considers it prudent in all the circumstances to separate in order to contact the \RaceDirector\ or emergency services,
+      \item a member of the \team\ remains with the stopped \competitor, and
+      \item the two other \competitor s run as a pair, remaining within 50\,m of each other, towards a location that is prudent in the circumstances.
+    \end{enumerate}
+  \end{enumerate}
+  \section{Compulsory equipment}\label{sec:CompulsoryEquipment}
+  \begin{enumerate}
+    \item A \team\ commits an offence if the \team\ arrives at the \Endpoint\ and is missing a piece of Category A compulsory equipment.
+
+    \Penalty{Disqualification of \team}
+    \item A \team\ commits an offence if the \team\
+       arrives at the \Endpoint\ and is missing a piece of Category B compulsory equipment.
+
+    \Penalty{2 hours time penalty for \team}
+    \item A \team\ commits an offence if the \team\
+      arrives at the \Endpoint\ and is missing a piece of Category C compulsory equipment.
+
+    \Penalty{30 minutes time penalty for \team}
+    \item In this section,  \defi{Category $X$ compulsory equipment} means equipment so marked in Schedule \ref{appendix:penalties}.
+    \item If a \team\ loses multiple pieces of compulsory equipment the penalties may be imposed consecutively.
+  \end{enumerate}
+  \section{Inappropriate or dangerous navigation}
+  \begin{fenumerate}
+    \item A \team\ must not:
+    \begin{enumerate}
+      \item scale or traverse cliffs,
+      \item ford torrential streams or rivers,
+      \item swim, or
+      \item otherwise attempt a route that is beyond the  \team's ability or is inappropriate or dangerous in the circumstances,
+    \end{enumerate}
+    \Penalty{Disqualification of \squad}
+  \end{fenumerate}
+  \section{Highways and railways}\label{sec:highways}
+  \begin{enumerate}
+    \item A \team\ must not
+    \begin{enumerate}
+      \item  course or run along, or
+      \item cross by any means,
+    \end{enumerate}  a highway except at points specified by the \RaceDirector.
+    \item A \team\ must not \begin{enumerate}
+      \item  course or run along, or
+      \item cross over,
+    \end{enumerate} the following railways with the exception of crossings at a level crossing, bridge, or underpass:
+    \begin{enumerate}
+    \item Canberra branch---entire extent
+      \item Bombala  line---from Joppa Junction to the ACT border and from the Numeralla River to Cooma Station
+    \end{enumerate}
+    \Penalty{Disqualification of \team}
+    \item A reference to a highway or a railway includes the highway or railway's corridor.
+  \end{enumerate}
+  \section{Identification}
+  \begin{enumerate}
+    \item A \team\ must identify themselves by providing:
+    \begin{enumerate}
+      \item their residence,
+      \item their Division
+    \end{enumerate}
+    whenever asked, whether by an official, competitor, spectator, or by any other person, and regardless of whether the \team\ has withdrawn or been disqualified. \amended
+
+    \item A \team\ must not refuse to identify themselves or provide false information when asked to identify themselves.
+
+    \Penalty{Disqualification of \team}
+  \end{enumerate}
+  \section{Rendering assistance}
+  \begin{enumerate}
+    \item If, during the \race, a \competitor\ or \team\ requests assistance from another \competitor\ or \team\ in genuine need, it shall be considered against the spirit of Inward Bound for the second \competitor\ or \team\ to refuse assistance if it is reasonable in all the circumstances for that \competitor\ or \team\ to render assistance.
+    \item In deciding whether the refusal is reasonable in all the circumstances, the following may be considered relevant.
+    \begin{enumerate}
+        \item the location and time of the request,
+      \item whether the first \competitor\ or \team\ has withdrawn or is likely to withdraw,
+      \item whether the two \competitor s  or \team s are of the same Division,
+      \item whether the nature and circumstances of the request for assistance suggest that a \competitor\ or \team\ may:
+      \begin{enumerate}
+        \item be able to finish at \Endpoint,
+        \item become injured, or
+        \item become lost
+      \end{enumerate}
+      should the request be refused
+      \item the ability of the second \competitor\ or \team\ to assist.
+    \end{enumerate}
+    \eg{If at the \dropoffpoint\ a \competitor\ asks another \team\ for assistance with determining the location of the \Endpoint\ or the \dropoffpoint, that would not be considered reasonable.}
+    \item If a \team\ is requested by another \competitor\ or \team\ to render assistance, the \team's Navigator shall inform the \RaceDirector\ immediately after:
+    \begin{enumerate}
+      \item arriving at \Endpoint, or
+      \item withdrawing from the \race,
+    \end{enumerate}
+    of the location and identity of the \competitor\ or \team\ requesting assistance, as well as the time it took place, to the best of their ability.
+  \end{enumerate}
+  \section{Cloaking}
+  \begin{fenumerate}
+    \item A \team\ must not interfere with any tracking device or attempt to conceal or disguise their route from the \RaceDirector, the \Referee, or an official.
+
+        \Penalty{Disqualification of \squad}
+  \end{fenumerate}
+  \chapter{Offences against fair competition}
+  \section{Peeking}
+  \begin{enumerate}
+    \item A \competitor\ must not
+    \begin{enumerate}
+      \item peek,
+      \item remove a blindfold, or
+      \item use equipment
+    \end{enumerate}
+    if the \competitor\ has been directed by an official to wear a blindfold.
+
+    \Penalty{Disqualification of \competitor}
+    \item If a \LeadDriver\ or other official suspects peeking, the \team\ of the suspected \competitor\ shall be allowed to continue the \race\ as if they had not been disqualified at the time the offence took place.
+  \end{enumerate}
+  \section{Opening the \TeamEnvelope}
+  \begin{enumerate}
+     \item[] A \team\ must not open the \TeamEnvelope\ during the \race.
+
+    \Penalty{Disqualification of \team}
+
+    \note{A \team\ is encouraged to open the \TeamEnvelope\ if they have withdrawn and require assistance.}
+  \end{enumerate}
+  \section{Outside assistance}
+  \begin{enumerate}
+    \item A \team\ commits an offence if:
+    \begin{enumerate}
+      \item the \team\ seeks or willingly obtains information, direction, or equipment including food from another person, and
+      \item the other person is not: \label{enum:assistanceotherperson}
+      \begin{enumerate}
+      \item  an official, or
+      \item  a \competitor.
+      \end{enumerate}
+    \end{enumerate}
+        \Penalty{Disqualification of \team}
+
+        \note{A \team\ or \competitor\ is encouraged to seek outside assistance if they have withdrawn.}
+        \item The fault element for \thesection(\ref{enum:assistanceotherperson}) is knowledge.
+    \item To remove doubt, it is not an offence for a  \competitor\ to obtain water from a person who is not a \spectator.
+  \end{enumerate}
+  \section{Dumping}
+  \begin{enumerate}
+    \item A \team\ must not dump or abandon equipment that was in their possession at the \scrutineeringarea.
+
+    \Penalty{Disqualification of \team}
+    \item The fault element is intention.
+    \item It is a defence to this section if:
+    \begin{enumerate}
+      \item the abandoned equipment is a map that is not compulsory, and
+      \item the equipment is surrendered to the \LeadDriver.
+    \end{enumerate}
+  \end{enumerate}
+  \section{Prohibited items}
+  \begin{enumerate}
+    \item The object of this section is to ensure that \team s use natural and traditional methods to determine their position and route during the \race.
+    \item An item is a \defi{prohibited item} if:
+    \begin{enumerate}
+      \item the item is an electronic or electromechanical instrument or device that can be used for navigation, or
+      \item the item is an altimeter, speedometer, pedometer, or signal direction finding device such as a radio direction finder, and
+      \item the item is not:
+      \begin{enumerate}
+      \item a piece of compulsory equipment, or
+      \item an \exemptitem.
+      \end{enumerate}
+    \end{enumerate}
+    \item A \team\ must not carry a \prohibiteditem\ after entering the \scrutineeringarea,  during the journey to the \dropoffpoint, or at any time during the \race.
+
+    \Penalty{Disqualification of \team}
+    \item An item is an \defi{exempt item} if it is:
+     \begin{enumerate} \amended
+     \item a  mobile phone that is to be sealed by an official, or
+     \item specified as such as by the \RaceDirector. \label{enum:exemptitem}
+     \end{enumerate}
+    \item A \team\ may submit to the \RaceDirector\ a request for an item to be exempt under subsection \thesection(\ref{enum:exemptitem}).
+  \end{enumerate}
+  \section{Prohibited items---Exempted use of sealed mobile phones}\amended
+  \begin{fenumerate}
+    \item A \team\ must not use the sealed mobile phone after entering the \scrutineeringarea, during the journey to the \dropoffpoint, or at any time during the \race, except in accordance with this section.
+
+        \Penalty{Disqualification of \team}
+    \item It shall be sufficient proof that a \team\ \defi{used a sealed mobile phone} that the seal made by officials during the pre-event scrutineering was found to be broken upon inspection by judges at \Endpoint.
+    \item A \competitor\ or \team\ does not breach this section if the intended use of the phone is:
+    \begin{enumerate}
+      \item to contact emergency services,
+      \item to contact the \RaceDirector, or
+      \item to receive a call or read a message from the \RaceDirector.
+    \end{enumerate}
+    \item To remove doubt, a \team\ must not access navigational information from the phone at any time during the \race.
+    \item It is the responsibility of all \team s prior to arrival at the \scrutineeringarea\ to ensure that an inbound call or message from the \RaceDirector\ will ring with a distinctive and audible tone throughout the \race. Failure to comply is an offence.
+
+        \Penalty{7 point penalty for \residence}
+    %\end{enumerate}
+  \end{fenumerate}
+   \section{Spectators---Interfering with competitors}
+  \begin{enumerate}
+    \item A \spectator\ must not interfere with \competitor s.
+
+    \Penalty{Disqualification of the \spectator's \residence}
+    \item \defi{Interfering with  competitors} means:
+    \begin{enumerate}
+      \item travelling along a route, that is not a direct route between the \Endpoint\ and Canberra or is not justifiable in the circumstances, where competitors are running or have been running,
+      \item communicating with competitors,
+      \item collecting equipment left by competitors,
+      \item causing prohibited items, or compulsory equipment not presented at scrutineering including food and water, to be available to \competitor s in the \coursearea; or
+      \item conduct that otherwise interferes with the safe and fair running of the \race.
+    \end{enumerate}
+  \end{enumerate}
+  \section{Corrupt conduct}
+  \begin{enumerate}
+    \item An official affiliated with a \residence\ commits an offence if the official:
+    \begin{enumerate}
+    \item  acts corruptly, and
+    \item does so for the purposes of:\label{enum:PurposeOfCorrupt}
+     \begin{enumerate}
+     \item giving a \team, \squad, or \residence\ an unfair advantage,
+     \item unfairly disadvantaging a \team, \squad, or \residence.
+  \end{enumerate}
+  \end{enumerate}
+  \item The fault element for \thesection(\ref{enum:PurposeOfCorrupt}) is intention.
+  \item A \competitor\ commits an offence if the \competitor:\label{enum:CorruptCompetitor}
+  \begin{enumerate}
+    \item induces an official to act corruptly, or
+    \item receives an advantage from an official acting corruptly.
+  \end{enumerate}
+  \Penalty{(No maximum)}
+  \item The fault element for \thesection(\ref{enum:CorruptCompetitor}) is intention or recklessness.
+  \item An official \defi{acts corruptly} if:
+  \begin{enumerate}
+    \item the official discloses partially or in full the \course\ without authority;
+    \item the official deliberately and improperly plants equipment on a \team\ without its knowledge or consent, or deliberately omits to give compulsory equipment to a \team;
+    \item the official deliberately performs a search badly;
+    \item the official makes a false statement to the \Referee\ or another official with the intention of           falsely incriminating or exonerating a \competitor, \team, \squad, \spectator, or \residence;
+    \item the official disobeys a direction by the \RaceDirector; or
+    \item the official's conduct is manifestly contrary to the fair running of the event.
+  \end{enumerate}
+  \item Evidence of the official receiving an advantage as a result of the corrupt conduct may be regarded as evidence of guilt, but the \Referee\ does not have to prove the official received or expected to receive an advantage.
+  \item The \Referee\ must not commence an investigation into an offence under this section without the consent of the \RaceDirector.
+  \end{enumerate}
+  \section{Miscellaneous}
+  \begin{fenumerate}
+    \item A \team\ must not act contrary to or in violation of Chapter~\ref{chapter:Synopsis} (Synopsis of the event.)
+
+    \Penalty{Disqualification of \team}
+    \item A  \team\ or \squad\  whose conduct during the event is not proscribed as an offence within the rules but is manifestly contrary to the intention of the Code or the spirit of Inward Bound may be disqualified.
+  \end{fenumerate}
+%  %
+%  %
+\chapter{Offences against  the good administration of the event}
+    \section{Failure to attend mandatory briefing}
+    \begin{fenumerate}
+      \item A \competitor\ commits an offence if:
+      \begin{enumerate}
+        \item the \competitor\ does not attend the mandatory briefing  in section \ref{sec:MandatoryBriefing} for its full duration, and
+        \item the \competitor\ had not received leave of the \RaceDirector\ to not attend the briefing.
+      \end{enumerate}
+      \Penalty{Disqualification of \competitor}
+      \item A \competitor\ commits an offence if:
+      \begin{enumerate}
+        \item the \competitor\ does not attend the mandatory briefing in section \ref{sec:MandatoryBriefing} for its full duration,
+        \item the \competitor\ received leave of the \RaceDirector\ to attend an alternative briefing, and
+        \item the \competitor\ does not attend the alternative briefing for its full duration.
+      \end{enumerate}
+      \Penalty{Disqualification of \competitor}
+      \item \hyplink{Absolute liability} apples to all elements of the offences in this section.
+      \item If, in the opinion of both the \Referee\ and the \RaceDirector, a \competitor\ has committed an offence under this section, the \competitor\ may be refused transport to the \dropoffpoint. If the \competitor's \team\ fails to replace the \competitor\ with another \competitor\ who has attended the mandatory briefing and has been approved by the \RaceDirector\ to compete in the relevant Division, the \team\ may be refused transport to the \dropoffpoint.\label{enum:NotBriefedDetermination}
+      \item The declaration under subsection~\thesection(\ref{enum:NotBriefedDetermination}) is a decision for the purposes of section \ref{sec:RefereeDecision}; in particular, the decision must be communicated to the \team's \Captain.
+    \item A decision under subsection \thesection(\ref{enum:NotBriefedDetermination}) is not appellable to the Tribunal.
+    \end{fenumerate}\amended
+%  %
+  \section{Late arrival to scrutineering}
+  \begin{enumerate}
+    \item A \team\ must not arrive at the \scrutineeringarea\ later than the time promulgated under section \ref{sec:PreEventScrutineering}.
+
+        \Penalty{Disqualification of \team}
+    \item \hyplink{Absolute liability} applies to this offence.
+    \item If, in the opinion of both the \Referee\ and the \RaceDirector, a \team's late arrival or failure to arrive with all compulsory equipment is likely to seriously interfere with the administration or safe running of the event:\label{enum:SeriouslyLate}
+         \begin{enumerate}
+         \item the \Referee\ may declare that a \team\ has committed an offence under this section, and \label{enum:LateArrivalDetermination}
+         \item    that \team\ may be refused transport to the \dropoffpoint.
+         \end{enumerate}
+    \item The declaration under subsection~\thesection(\ref{enum:LateArrivalDetermination}) is a decision for the purposes of section \ref{sec:RefereeDecision}; in particular, the decision must be communicated to the \team's \Captain.
+    \item A decision under subsection \thesection(\ref{enum:SeriouslyLate}) is not appellable to the Tribunal.
+  \end{enumerate}
+  \section{Refusing searches}
+  \begin{enumerate}\item[]
+  A \team\ must not refuse a search by an authorized official, whether at the pre-event scrutineering, or at the \Endpoint, or at any other time.
+
+  \Penalty{Disqualification of \team\ plus 12 point penalty for \residence}\end{enumerate}
+  \section{Disobeying official directions}\label{sec:disobeyofficial}
+  \begin{enumerate}
+    \item A \competitor, \team, or \spectator\ must not disobey a direction by:
+    \begin{enumerate}
+      \item the \RaceDirector, or
+      \item the \Referee
+    \end{enumerate}
+    or one of their delegates.
+
+    \Penalty{Disqualification of affiliated residence}
+    \item It is the responsibility of all competitors and \team s:
+    \begin{enumerate}
+      \item to ensure such a direction is consistent with this Code,
+      and
+      \item where the direction appears inconsistent---to clarify the direction by indicating to the official the apparent contradiction.
+    \end{enumerate}
+    \eg{If a competitor withdraws and an official directs the other members to keep running in the event, the other members must ensure the official is aware of the rule prohibiting separation in those circumstances before obeying it.}
+    \item A competitor or team must not disobey a direction by a member of the emergency services in that capacity.
+
+        \Penalty{(No maximum)}
+  \end{enumerate}
+    \section{Failure to finish or report in when required}\amended
+  \begin{enumerate}
+    \item A \team\ commits an offence if the \team\ is still racing at 5\,pm on the Saturday of the event.\label{enum:stillracing}
+
+        \Penalty{Disqualification of \team\ plus 7 point penalty for \residence}
+    \item It is a defence to subsection \thesection(\ref{enum:stillracing}) if:
+    \begin{enumerate}
+      \item the \team\ had, some time after 4\,pm, successfully and truthfully informed the \RaceDirector\ of the \team's location, spirits,  supplies of food and water, and any other details the \RaceDirector\ required, and
+          \item the \RaceDirector\ had subsequently directed the \team\ to continue to the \Endpoint.
+    \end{enumerate}
+    \item A \team\ that has been directed by the \RaceDirector\ to continue to the \Endpoint\ after 4\,pm must not fail to finish or withdraw by:
+        \begin{enumerate}
+        \item 7\,pm, or
+        \item if the \RaceDirector\ specified an earlier time---the time specified.
+        \end{enumerate}
+
+    \Penalty{Disqualification of \team\ plus 7 point penalty for \residence}
+    \item The \RaceDirector\ may relieve any \team\ from any requirement of this section before or during the \race.
+  \end{enumerate}
+  \section{Leaving the course area}
+  \begin{enumerate}
+    \item A \team\ must not leave the \coursearea.
+
+    \Penalty{Disqualification of \team}
+    \item \hyplink{Absolute liability} applies to this offence.
+  \end{enumerate}
+  \section{Spectators---Early arrival}
+  \begin{enumerate}
+    \item[] A \spectator\ must not arrive at the \Endpoint\ before 6\,am on the Saturday of the event.
+
+    \Penalty{10 point penalty for affiliated residence}
+  \end{enumerate}
+  \section{Spectators---Entering the approach}
+  \begin{enumerate}
+    \item A \spectator\ or a \competitor\ who has finished or withdrawn must not enter or remain in the \approach\ whilst a \team\ is  racing  in the \approach.
+
+        \Penalty{Disqualification of one division from affiliated \residence}
+    \item A \spectator\ or a \competitor\ who has finished or withdrawn must not loiter at the judging area whilst a \team\ is being searched by the judges.\label{enum:loiter}
+
+    \Penalty{3 point penalty for affiliated \residence}
+    \item Subsection~\thesection(\ref{enum:loiter}) does not apply to a \Captain\ or a \President.
+  \end{enumerate}
+  %
+  %
+  %
+  %
+  %
+  \part{Judicature}
+  \chapter{The Referee}
+  \section{Establishment of Referee}
+  \begin{fenumerate}
+    \item There is to be an officer of the event, called the \defi{Referee}, who shall be the principal disciplinary officer of the event and shall have the authority to:
+    \begin{enumerate}
+      \item interpret the rules of Inward Bound except inconsistently with precedents set by the Tribunal,
+      \item make findings on questions of fact,
+      \item convict competitors or spectators of breaches of the rules, and
+      \item impose penalties in accordance with this Part
+    \end{enumerate}
+  \end{fenumerate}
+  \section{Appointment}
+  \begin{fenumerate}
+    \item The \Referee\ is to be appointed by the \RaceDirector.
+  \end{fenumerate}
+  \section{Delegation}
+  \begin{fenumerate}
+    \item The \Referee\ may appoint delegates.
+  \end{fenumerate}
+  \section{Referee not to be a competitor or resident}
+  \begin{fenumerate}
+  \item
+  The Referee:
+  \begin{enumerate}
+    \item cannot be a competitor of the event for which is he or she is appointed as the Referee, and
+    \item cannot be a current resident of a residence competing in the event or have been a resident of a competing residence at any time in the year of the event.
+  \end{enumerate}
+  \end{fenumerate}
+  \section{Powers}
+  \begin{fenumerate}
+    \item The \Referee\ shall have the power to:
+    \begin{enumerate}
+      \item conduct searches of \competitor s,
+      \item interview \competitor s, \spectator s, and other officials, including the \RaceDirector, and
+      \item access and inspect official records of the event.
+    \end{enumerate}
+  \end{fenumerate}
+  \section{Penalty for uncooperative conduct}
+  \begin{fenumerate}
+    \item If the \Tribunal\ is satisfied a person did not adequately cooperate with the \Referee, the \Tribunal\ may, in any relevant proceeding, accept that as evidence of guilt adverse to the person.
+  \end{fenumerate}
+  \chapter{Principles}
+  \section{Burden of proof}
+  \begin{fenumerate}\item
+  The \Referee\ bears the burden of proving every element of an offence relevant to the guilt of the accused.
+  \item If a \Captain\ or \President, on behalf of the accused, wishes to rely on an exemption created by this Code, he or she bears the burden of proving every element of the exemption.
+  \end{fenumerate}
+  \section{Standard of proof}
+    \begin{fenumerate}\item
+  A burden of proof, whether on the \Referee\ or on the accused, is to be discharged on the balance of probabilities.\end{fenumerate}
+  \section{Fault elements}
+    \begin{fenumerate}\item
+  Unless the provision specifies to the contrary,  all offences under this Code have no fault elements. In particular, it is not a sufficient defence to a charge that the accused had no intention or knowledge of an element thereof.
+  \end{fenumerate}
+  \section{Absolute liability}%\phantom{.}
+  %
+    \begin{enumerate}
+    \item[] \hypertarget{Absolute liability}
+  If a provision of this Code creates an offence and provides that the offence or an element of it is one of \defi{absolute liability} then there are no fault elements and the defence of mistake of fact is unavailable.
+  \end{enumerate}
+  \section{Attempts}
+  \begin{fenumerate}
+    \item If a provision of this Code makes an offence it is also an offence to attempt to commit that offence.
+
+    And the penalty for attempting an offence is the penalty that would have been imposed had the attempt been successful.
+  \end{fenumerate}
+  \section{Joint and vicarious liability for offences}
+  \begin{enumerate}
+    \item The members of a \squad, the members of a \team, and the members of a \residence\ are jointly responsible for their conduct.
+    \item If a provision of this Code that makes an offence proscribes conduct by a \team's \competitor s, the \Referee\ does not have to specify which \competitor\ was responsible for the conduct in order to prove the guilt of the \team\ if it can be established one of the \team's \competitor s was responsible for the conduct.
+    \item A \residence\ is vicariously responsible for the conduct of its \spectator s, its \Coach, and its \President. A penalty of disqualification that is applicable to a future \team, \squad, or \residence, (as a consecutive penalty) is to be taken as prohibiting the entry of that \residence\ in a Division or the event for the subsequent year.
+  \item A penalty against a \squad\ or \residence\ is to be applied to every \team\ in the \squad.
+
+  \end{enumerate}
+  \section{Maximum penalty}
+  \begin{enumerate} \item
+  Where a provision of this Code makes an offence, the penalty written thereafter is to be read as the maximum penalty available for that offence.
+  \item If a provision of this Code makes an offence but does not specify a penalty, the maximum penalty is the disqualification of the affiliated residence for both the event in which the offence either took place or was most closely associated with and in the event in the subsequent year. This penalty is to be reserved for conduct falling into the worst category.
+  \item If a \residence\ or the members thereof are guilty of two or more offences that deserve penalties, the penalties imposed may be combined or served consecutively if it is in the interests of justice to do so.
+  \end{enumerate}
+%  {\small In this section, \defi{affiliated residence} means the offending \residence\ or the \residence\ of the %\Captain\ who entered the offending \competitor, \team, or \squad, or the \residence\ of the \President\ of the %offending \spectator.}
+  \section{Less severe penalties may be imposed}
+  \begin{enumerate}
+    \item If a breach is proved, a less severe penalty than the maximum penalty may be imposed.
+    \item For all offences, the \Referee\ may warn or reprimand the accused \Captain\ or \President.
+  \end{enumerate}
+  \section{Some matters not relevant to the severity of a penalty}
+  \begin{fenumerate}
+    %\item A penalty, whether imposed by the \Referee\ or by the Tribunal, is to be imposed having regard only to %the nature of the offence.
+    \item The following matters are irrelevant in deciding whether to impose a penalty or in determining the severity of a penalty:
+    \begin{enumerate}
+      \item whether the result of the penalty would mean a change in the rank of the affiliated residence or \team\ whether in the event or in a wider competition of which Inward Bound is a part.
+      \item whether the penalty would be particularly severe on a \Coach\ or \President.
+    \end{enumerate}
+  \end{fenumerate}
+  \section{Totality in multiple penalties}
+  \begin{enumerate}
+    \item If the \Referee\
+       finds that a single \residence\ was responsible for multiple separate punishable offences, the \Referee\ shall impose a penalty,  exceeding neither  two consecutive disqualifications of the affiliated \residence\ nor the sum or union of the maximum penalties for the those offences, that reflects the totality of the offences committed, even if this exceeds the sum or union of the individual penalties that would have been imposed.
+
+       \eg{if the \Referee\ finds that a residence has committed an offence with a maximum penalty of two consecutive disqualifications of the residence and an offence with a maximum penalty of disqualification of the team, the \Referee\ may impose a penalty of disqual\-ification of the squad and a penalty disqualifying the residence from the \team's Division in the subsequent event, even if the first offence only warranted one disqualification of the residence.}
+    \item A decision to impose a penalty reflecting the totality of multiple offences shall prevail over any decision regarding one or a subset of the individual offences, even if the decision has been published, the Tribunal has made a ruling on it, or the \Referee\ took into account the totality of the offences in the subset.
+  \end{enumerate}
+  \chapter{Training}
+  \section{Application of this Code to training}
+  \begin{fenumerate}
+    \item If the \Referee\ wishes to prosecute a residence or member thereof of an offence under this Code which took place in the course of training, the \Referee\ must first establish that the application of this Code to the offence in question is justified.
+  \end{fenumerate}
+  \chapter{How offences are to be reported}
+  \section{Requisites of complaint}\label{sec:ReportsOfMisconduct}\label{sec:RequisitesComplaint}
+  \begin{enumerate}
+    \item Before  3\,pm on the Sunday immediately following the event,
+    \begin{enumerate}
+      \item the \RaceDirector\ or any other official of the event, or
+      \item the \Captain\ of any competing residence, or
+      \item the \President\ of any competing residence,
+    \end{enumerate}
+    may lodge in writing a complaint against a \competitor, \team, \squad, \spectator, designated person, \official\ or \residence\   (the \defi{accused}) for committing an offence, at a place specified by the \Referee.
+    \item Such a complaint must specify:
+    \begin{enumerate}
+        \item that it is a complaint under this section,
+      \item the name, title, and residence of the complainant,
+      \item the address of the complainant to which communication under this Part is to be directed,
+      \item the residence of the accused,
+      \item the provision of the Code creating the offence alleged to have been committed,
+      \item the location at which the alleged breach took place, and
+      \item as much other detail as the complainant can provide
+    \end{enumerate}
+    \item The \Referee\ may investigate a breach of the rules by his or her own motion.
+    \item The \Referee\ may accept a late application if it is in the interests of justice to do so.
+  \end{enumerate}
+  \section{Investigation}\label{sec:Investigation}
+  \begin{enumerate}
+    \item The \Referee\ shall investigate any complaint made  under section \ref{sec:ReportsOfMisconduct}.
+    \item The \Referee\ shall notify:
+    \begin{enumerate}
+      \item if the complaint is against a competitor, team, or squad---the \Captain\ of the affiliated residence,
+      \item if the complaint is against a spectator---the \President\ of the affiliated residence,
+    \end{enumerate}
+    of the nature of the complaint and the identity of the complainant.
+    \item The \Captain\ or \President\ (as the case may be) has the right to make a written statement to the \Referee \ within 24 hours of receiving the notice. The \Captain\ or \President\ is not obliged to exercise this right but it may harm an appeal under section \ref{sec:TribunalAppeal} if the \Captain\ or \President\ does not mention to the \Referee\ under this section a defence that the \Captain\ or \President\ comes to rely upon.
+    \item The \Referee\ may interview competitors or spectators as he or she sees fit. All \competitor s, \Captain es and  \President s must cooperate with the \Referee.
+    \end{enumerate}
+    \section{Plea of guilty}
+  \begin{fenumerate}
+    \item The \Captain\ or \President\ of the accused in reply to a notice under section \ref{sec:Investigation} may admit guilt to the offence in writing.
+    \item If the \Referee\ receives such an admission and acting under section \ref{sec:RefereeDecision} decides to impose a penalty, the \Referee\ shall take the admission of guilt into account and may accordingly impose a less severe penalty than he or she would otherwise have imposed.
+    \item An admission of guilt does not automatically preclude the \Referee\ from imposing the maximum penalty.
+  \end{fenumerate}
+  \section{Decision}\label{sec:RefereeDecision}
+  \begin{enumerate}
+    \item Upon the conclusion of the investigation, the \Referee\ shall make a decision to either:
+    \begin{enumerate}
+      \item take no action, or
+      \item impose penalties.
+    \end{enumerate}
+    \item A decision must be:
+    \begin{enumerate}
+      \item made in writing, and
+      \item communicated to:
+      \begin{enumerate}
+      \item \Captain\ or \President\ of the accused, and
+      \item the complainant
+      \end{enumerate}
+    \end{enumerate}
+    \item The decision must specify:
+    \begin{enumerate}
+      \item the date on which it was made,
+      \item the reasons for the decision, including findings on questions of fact relevant to the decision and the \Referee's interpretations of the rules, and
+      \item if the decision is to impose penalties---the rights of appeal exercisable by the \Captain\ or the \President.
+    \end{enumerate}
+    \item The \Referee\ shall come to a decision within 48 hours of receiving the complaint.
+  \end{enumerate}
+  \section{Decision to be published}\label{sec:DecisionPublish}
+  \begin{fenumerate}
+    \item A decision under section~\ref{sec:RefereeDecision} shall be published on a public website  specified by the \RaceDirector\ as soon as practicable after being made.
+  \end{fenumerate}
+  \section{Offences against the spirit of Inward Bound}
+  \begin{fenumerate}
+    \item A complaint of an act contrary to the spirit of Inward Bound shall be made to the \Referee\ as if it were a complaint under section~\ref{sec:ReportsOfMisconduct}.
+    \item Upon receiving such a complaint, the \Referee\ shall refer the complaint to a member of the Tribunal for the Tribunal's judgment.
+  \end{fenumerate}
+  \section{Late decisions}\label{sec:LateDecisions}
+  \begin{enumerate}
+    \item If the \President\ or \Captain\ of the accused has not received notice of a decision 48 hours after either the complaint was lodged or a notice under section~\ref{sec:Investigation} was sent (whichever is the later), the complaint shall, subject to this section and section \ref{sec:TribunalPowers}, be deemed to have been dismissed by the \Referee\ with no penalty imposed.
+    \item The \Referee\ may apply to a member of the Tribunal for an extension to this time. If the extension is granted, the \Referee\ shall forthwith communicate this fact to the \President\ or \Captain\ of the accused. If the period of time granted by the Tribunal also expires, the complaint shall be deemed to have been dismissed by the \Referee\ with no penalty imposed.
+  \end{enumerate}
+
+  %
+  %
+  %
+  %
+  %\part{The Tribunal}
+  %
+  %
+  %
+  \chapter{The Tribunal}
+  %
+  %
+  \section{Right of \xCaptain es and \xPresident s to appeal decision by Referee}\label{sec:TribunalAppeal}
+  \begin{enumerate}
+    \item If a \Captain\ or \President\ is aggrieved by a decision made by the \Referee\ under section \ref{sec:RefereeDecision}, he or she has the right to appeal that decision, unless the section creating the relevant offence contains a contrary provision or the \Coach\ or \President\ is a  vexatious appellant.
+   % \item If the \Captain\ or \President\ is not able to exercise that right, a delegate may appeal.
+    \item No other person has the right to lodge an appeal against a decision by the \Referee.
+    %\item An appeal of a decision must be lodged with a member of the Tribunal no later than seven days after %the date of the decision.\amended
+  \end{enumerate}
+  \section{Method of appeal}\label{sec:MethodOfAppeal}
+  \begin{fenumerate}
+    \item The validity or merits of any decision made under section~\ref{sec:RefereeDecision} may be disputed by petition addressed to the Tribunal and not otherwise.
+  \end{fenumerate}
+  \section{Requisites of petition}
+  \begin{fenumerate}
+    \item Subject to subsection \thesection(\ref{enum:TribunalRelieve}), a petition made pursuant to section~\ref{sec:MethodOfAppeal}:
+    \begin{enumerate}
+          \item shall specify the fault original decision,
+      \item shall set out the facts relied on to invalidate or otherwise vitiate the decision,
+      \item shall be lodged with the \RaceDirector\ no later than seven days after the date the decision was published under section~\ref{sec:DecisionPublish}, and
+      \item shall be signed by the petitioning \Coach\ or \President.
+    \end{enumerate}
+    \note{An email from the \Coach's email address as specified in section~ \ref{sec:entryresidence}(\ref{enum:CoachEmail}) shall be regarded as having been signed by the \Coach\ or by the \President.}
+    \item The Tribunal may relieve any \Coach\ or \President\ from any requirement of this section.\label{enum:TribunalRelieve}
+  \end{fenumerate}
+  \section{Criteria for granting leave to appeal}
+  \begin{enumerate}
+    \item The Tribunal may refuse to hear an appeal of a decision even if it determines the relevant petition was valid.
+    \item Before granting leave to appeal to the Tribunal under this Code the Tribunal must first be satisfied that the intervention of the Tribunal is justified.
+  \end{enumerate}
+  \section{The Tribunal}
+  \begin{enumerate}
+    \item The \defi{Tribunal} shall be composed of three officers, called \defi{members of the Tribunal}:
+    \begin{enumerate}
+      \item the President of the Interhall Sports Organisation,
+      \item the \RaceDirector, and
+      \item the \CourseSetter.
+    \end{enumerate}
+    \item The Tribunal shall sit as an open Tribunal and shall have the jurisdiction to try any petition made to it under this Chapter.
+    \item A quorum of the Tribunal shall be two members.
+    \item The \Referee\ shall have the right to appear before any proceedings of the Tribunal, and  to be informed of any proceedings.
+  \end{enumerate}
+  \section{Recusal}
+  \begin{enumerate}
+    \item Any member of the Tribunal may recuse himself or herself if the member determines he or she cannot act impartially. Under such a recusal, the disqualified member shall nominate another person to sit in his or her place as a full member of the Tribunal.
+     \item No member of the Tribunal shall be disqualified from hearing a proceeding merely on the basis:
+     \begin{enumerate}
+       \item that they are a resident of, affiliated with, or otherwise connected to, a residence whose \Captain\ or \President\ is a party to the proceeding; or
+       \item that they are aware of a material fact before the proceeding.
+     \end{enumerate}
+  \end{enumerate}
+  \section{Powers of the Tribunal}\label{sec:TribunalPowers}
+  \begin{enumerate}
+    \item The Inward Bound Tribunal or a majority of the members shall have the power:
+    \begin{enumerate}
+      \item to adjourn;
+      \item to make Rules of the Tribunal consistent with this Code for carrying out its function and for regulating its procedures, including imposing  fees;
+      \item to compel the attendance of:
+      \begin{enumerate}
+        \item officials
+        \item \competitor s,
+        \item \Captain es,
+        \item \President s, and
+        \item complainants;
+      \end{enumerate}
+      \item to interpret the rules of Inward Bound;
+      \item to uphold or quash any decision by the \Referee, and to substitute its own;
+      \item to return a complaint deemed to have been dismissed under section \ref{sec:LateDecisions} to the \Referee\ for review;
+      \item to conclusively declare the result of any Division;
+      \item to declare that no places are to be awarded in a Division or in the event;
+      \item to declare that an act was contrary to the spirit of Inward Bound, and to punish such acts;
+      \item to judge any \Coach\ or \President's conduct as vexatious;
+      \item to dismiss any petition as invalid; and
+      \item to punish any contempt of its authority by disqualification or point or time penalties.
+    \end{enumerate}
+    \item The Tribunal may exercise all of any of its powers under this section on such grounds as the Tribunal in its discretion thinks just and sufficient.
+  \end{enumerate}
+  \section{Real justice to be observed}
+  \begin{fenumerate} \item
+The Tribunal shall be guided by the substantial merits of each case and will not be constrained by legal forms or technicalities.%
+\end{fenumerate}
+    \section{Decision to made quickly}
+    \begin{fenumerate}
+      \item The Tribunal must make its decision on a petition as quickly as is reasonable.
+    \end{fenumerate}
+\section{Decision to be published}
+\begin{fenumerate}
+  \item Any decision or declaration made by the Tribunal shall be published on a public website as specified by the \RaceDirector\ within seven days.
+\end{fenumerate}
+  \chapter{Miscellaneous}
+  \section{Irrelevant matters}
+  \amended
+  \begin{fenumerate}
+    \item In any proceedings of the Tribunal the following matters are irrelevant.
+    \begin{enumerate}
+      \item Whether the \Referee's impartiality was influenced by:
+      \begin{enumerate}
+    \item having previously been a resident of a particular residence, or
+    \item having or having not previously been:
+    \begin{enumerate}
+      \item a \competitor, or
+      \item a \spectator.
+    \end{enumerate}
+    in an Inward Bound event.
+  \end{enumerate}
+  \item Whether a \competitor, \team, or \squad\ had sufficient or equal time to prepare for the event.
+  \item Whether a \competitor, \team, or \squad\ had more or less natural talent or natural athleticism than another \competitor, \team, or \squad.
+  \item Whether the course was more or less difficult than anticipated by a \competitor, \team, or \squad.
+  \item Whether the course advantaged a \competitor, \team, or \squad, including by being near or similar to a training location.
+    \end{enumerate}
+  \end{fenumerate}
+
+  %\part{The appeals tribunal}
+\cleardoublepage
+  \appendix
+  \part{Schedules}
+  \renewcommand\thesection{}
+  \renewcommand\appendixname{Schedule}
+  \chapter{Compulsory equipment}\label{Sch:CompulsoryEquipment}
+  The following are compulsory for every \team.
+  \section{Supplied by Committee}
+  \begin{itemize}
+  \renewcommand\labelitemi{}
+  \item $1:250\,000$ scale map of the \coursearea
+  \item  basic first aid kit
+  \item  \TeamEnvelope\ (sealed)
+  \item electronic locator beacon (sealed)
+  \item (other equipment so designated by the \RaceDirector\ at the mandatory briefing)
+  \end{itemize}
+  \section{Not supplied by Committee}
+  \begin{table}[H]
+  \rowcolors{2}{gray!13}{white}
+  \begin{tabular}
+    {clcc} \rowcolor{black}
+    &\textcolor{white}{\textbf{Item}} & \textcolor{white}{\textbf{Quantity}}&\textcolor{white}{\textbf{Number}}\\
+    \hline
+    $*$ & magnetic compass & & 2\\
+    $*$&headlamps & & 4\\
+    &set of six $\mbox{1:100\,000}$ scale topographic maps covering the \coursearea$^\ddag$ & &1\\
+    &water & 8.0\,kg & \\
+    &food &  4.0\,kg$^{\P}$ & \\
+    &woollen or fleece pullover & & 4\\
+    &woollen beanie & & 4\\
+    &pair of gloves & & 4\\
+    &20\,cm strip of reflective material on backpack, visible from rear &  &4\\
+    &thermal underwear (top and bottom)$^\dag$ & & 4\\
+    &waterproof jacket / poncho & & 4\\
+    &space blanket & & 4\\
+    &ground sheet & & 1\\
+    $*$&whistle & & 4\\
+    &rope or cord & $>12\,\mathrm{m}$ &\\
+    &mobile telephone fully charged pre-event (sealed)& & 1\\
+    &photo identification (for each competitor) & & 4\\
+    $*$&watch (with no navigational function besides time) & & 4\\
+    &long pair of pants$^{\ddag\ddag}$ & & 4\\
+    & immobilization  bandage$^{\S}$& & 1
+  \end{tabular}\vspace{12pt}
+  \begin{tabular}{lp{15cm}}
+  $*$&{\small indicates items compulsory for Scouts during the \scoutingperiod.}\\
+  $\ddag$&{\small Printed by Geoscience Australia: Tantangara (8626), Brindabella (8627), Michelago (8726), Canberra (8727), Araluen (8826), Braidwood (8827).}\\
+  \P &{\small or other similar adequate amount (less will be at \RaceDirector's discretion). Must be appropriately nutritious for the event at discretion of scrutineer}\\
+  $\dag$&{\small Must be hydrophobic, made of polypropylene, polyester, chlorofibre, lightweight wool. Cotton, lycra, or coolmax not acceptable. Compression garments not acceptable.}\\
+  $\ddag\ddag$&{\small Compression garments acceptable}\\
+  \S & {\small must be commercially designed for snakebite treatment}
+  \end{tabular}
+  \end{table}
+  \vspace{12pt}
+%\titlespacing*{\chapter}{0pt}{-309mm}{400pt}
+  \chapter{Penalty categories}\label{appendix:penalties}
+  \newcommand{\A}{$\blacksquare\blacksquare\blacksquare$}
+  \newcommand{\B}{$\blacksquare\blacksquare$}
+  \newcommand{\C}{$\blacksquare$}
+  \begin{table} \rowcolors{2}{gray!13}{white}
+  \begin{longtable}
+    {rlrr}
+    \textbf{Penalty category} & \textbf{Item}& &\\
+    \hline
+    \A& $1:250\,000$ map of Canberra \\
+    \A&$1:100\,000$ maps \\
+    \A&First aid kit\\
+    \A& immobilization bandage\\
+    \A&Team envelope (sealed) \\
+ %   Blindfolds &  N/A \\
+    \A&electronic locator beacon (sealed)\\
+    \A&Photo ID  \\
+    \A&mobile telephone  \\
+    \B&magnetic compass  \\
+    \B&headlamps \\
+   N/A& water  \\
+    \C&food (evidence of)  \\
+    \C&woollen or fleece pullover \\
+    \C&woollen beanie \\
+    \C&pair of gloves \\
+    \C&strip of reflective material on backpack, visible from rear \\
+    \C&thermal underwear (top and bottom) \\
+    \C&waterproof jacket / poncho \\
+    \C&space blanket \\
+    \C&ground sheet \\
+    \B&whistle \\
+    \C&rope \\
+    \B&watch \\
+    \C&long pair of pants\\
+    \A&(other equipment so designated by the \RaceDirector)
+  \end{longtable}\vspace{24pt}
+  \begin{center}
+  \begin{tabular}
+    {rl}
+    \A & Category A\\
+    \B & Category B\\
+    \C & Category C
+  \end{tabular}\end{center}
+  %$\dag$~{\small Must be hydrophobic, made of polypropylene, polyester, chlorofibre, lightweight wool. Cotton, lycra, or coolmax %not acceptable}
+  \end{table}
+
+  %\chapter{(Reserved for rules particular to each event)}
+  \chapter{Scoring}\label{appendix:scoring}
+%  \section*{Ordinary scoring}
+  For each \team, the \team's residence will receive points according to the following equation.
+  \[\text{Score} = \begin{cases}0 &\text{if withdrawn or disqualified} \\ 21 - \text{Division} - \text{Placing} &\text{otherwise} \end{cases}\]
+  So for example a team that finishes 3rd in Division 5 will receive $21-5-3=13$ points. \\[12pt]
+  The total points for the residence is the sum of the points received by each \team\ in its \squad, less points from penalties.\\[12pt]
+  If a dead-heat is declared by the \chiefjudge-on-duty the placing for all \team s so tied shall be equal to
+  \[(\text{the number of \team s already finished in that Division})+1\]
+  \chapter{The Interhall Sports Organisation by-law relating to Inward Bound}
+
+\section{Organisation and Appointment}
+Inward Bound shall be organised by the Inward Bound Race Director, appointed
+by the ISO Executive before the end of the first semester of each academic year.
+
+In appointing the Inward Bound Race Director, the ISO shall consider the
+candidate's experience as a participant and/or organiser in previous Inward Bound
+events. Candidates must be a member of the ANUSRA, but need not be a member
+of the ISO or a Resident.
+
+\section{Responsibilities}
+The Inward Bound Race Director will be responsible for:
+\begin{itemize}
+\item the organization of the Inward Bound event for the year following their
+appointment;
+\item ensuring that all legal, risk management, and safety procedures are
+implemented;
+\item at his/her sole discretion, appointing individuals to participate in an
+informal ``Inward Bound Student Organising Committee'';
+\item proposing to the ISO any costs or levies that any participating Residence
+will be required to contribute in order to participate in the event;
+\item administering the costs and fees associated with Inward Bound;
+\item recording and collating all information and relevant documentation and
+delivering this to the Secretary of ISO on acquittal of the event;
+\item regular correspondence with the ISO during the preparation of the event.
+\end{itemize}
+The Inward Bound Race Director may, at his/her discretion, delegate any tasks
+arising from the above responsibilities to any other individual.
+
+\section{Rules}
+The rules contained within the Inward Bound Event Code shall form Appendix A
+of these by-laws and are to be enforced as rules of the ISO.
+
+The Inward Bound Race Director shall be responsible for adjudicating the event in
+accordance with the Inward Bound Event Code and shall deliver the event results
+to the ISO within 5 working days of its end.
+
+Where the provisions in the Inward Bound Event Code conflict with those in these
+by-laws, the Inward Bound Event Code shall take precedence.
+
+Any changes to the Inward Bound Event Code must be submitted and approved by
+the ISO at a Committee Meeting.
+  \printindex
+\end{document} 
