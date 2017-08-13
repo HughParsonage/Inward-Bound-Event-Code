@@ -1,0 +1,177 @@
+\usepackage{amsmath}
+\usepackage{float}
+\usepackage{parskip}
+\usepackage{makeidx}\makeindex
+\usepackage{txfonts}
+\usepackage[table]{xcolor}
+\usepackage{longtable}
+\usepackage{appendix}
+\usepackage{nameref}
+\usepackage[explicit]{titlesec}
+\addtolength{\textwidth}{0cm}
+\addtolength{\textheight}{1cm}
+    \titleformat{\section}%
+            {\Large\bfseries}% format
+            {\llap{% label
+               \thesection\hskip 9pt}#1}%
+            {0pt}% horizontal sep
+            {}% before
+
+    \titleformat{\subsection}%
+            {\bfseries}% format
+            {\llap{% label
+               \thesubsection\hskip 9pt}#1}%
+            {0pt}% horizontal sep
+            {}% before
+%\usepackage[compact]{titlesec}
+\usepackage{remreset}
+                \makeatletter
+                    \@addtoreset{chapter}{part}
+                    \@removefromreset{section}{chapter}
+                \makeatother
+                %
+            \renewcommand\thesection{\arabic{section}}
+\usepackage{environ}
+    \makeatletter
+    \NewEnviron{fenumerate}
+      {\setbox0=\vbox{\enumerate\BODY\endenumerate\expandafter}%
+       \expandafter\def\expandafter\@tempfenum\expandafter{\the\value{\@enumctr}}%
+       \vspace{-6pt}
+       \begin{enumerate}
+         \ifnum\@tempfenum=\@ne\expandafter\def\csname label\@enumctr\endcsname{}\fi
+         \BODY
+       \end{enumerate}}
+    \makeatother
+\usepackage[hypertexnames=false,colorlinks,pdftex,linkcolor=blue]{hyperref}
+    \makeatletter
+     \newcommand{\nop}[1]{\Hy@raisedlink{\hypertarget{#1}{}}}
+    \makeatother
+    \newcommand{\hyplink}[1]{\hyperlink{#1}{{#1}}}
+
+\makeatletter
+\def\thickhrulefill{\leavevmode \leaders \hrule height 1pt\hfill \kern \z@}
+\renewcommand{\maketitle}{\begin{titlepage}%
+    \let\footnotesize\small
+    \let\footnoterule\relax
+    \parindent \z@
+    \reset@font
+    \null
+    \vskip 10\p@
+    \hbox{\mbox{\hspace{3em}}%
+      \vrule depth 0.6\textheight%
+      \mbox{\hspace{2em}}
+      \vbox{
+        \vskip 20\p@
+        \begin{flushleft}
+          \Large \@author \par
+        \end{flushleft}
+        \vskip 80\p@
+        \begin{flushleft}
+          \huge \bfseries \@title \par
+        \end{flushleft}
+        \vfil
+        }}
+    \null
+  \end{titlepage}%
+  \setcounter{footnote}{0}%
+}
+\makeatother
+                \title{Inward Bound Event Code 2013}
+                \author{Final}
+
+\newcommand{\defi}[1]{\nop{#1}{\textbf{\emph{#1}}}\index{#1}}
+
+\renewcommand\labelenumi{(\arabic{enumi})}
+\renewcommand\labelenumiii{(\roman{enumiii})}
+\renewcommand\labelenumiv{(\Alph{enumiv})}
+    \makeatletter
+    \renewcommand{\p@enumii}{\theenumi)(}
+    \makeatother
+
+%% A
+\newcommand\approach{\hyplink{approach}}
+\newcommand\amended{%\marginpar{\textbf{amend.}}
+}
+
+
+%% C
+\newcommand{\Captain}{\hyplink{Coach}}
+\newcommand{\chiefjudge}{\hyplink{chief judge}}
+\newcommand{\Coach}{\hyplink{Coach}}\newcommand{\xCaptain}{Coach}
+\newcommand{\competitor}{\hyplink{competitor}}
+\newcommand{\course}{\hyplink{course}}
+\newcommand{\CourseSetter}{\hyplink{course setter}}
+\newcommand{\coursearea}{\hyplink{course area}}
+
+%% D
+\newcommand\dropoffpoint{drop-off point}
+%\newcommand\divv{\hyplink{div}}
+
+%% E
+\newcommand{\eg}[1]{{\small
+\begin{tabular}
+  {p{0.3cm}p{11.75cm}}
+  \emph{e.g.}&#1
+\end{tabular}
+}}
+\newcommand\Endpoint{end point}
+\newcommand\Event{event}
+\newcommand\exresident{\hyplink{ex-resident}}
+\newcommand\exemptitem{\hyplink{exempt item}}
+
+% F
+\newcommand{\finishline}{\hyplink{finish line}}
+
+% L
+\newcommand{\LeadDriver}{Lead Driver}
+
+%  N
+\newcommand{\note}[1]{{\small%\vspace{-12pt}
+\begin{tabular}
+  {p{0.75cm}p{11.25cm}}
+  \textbf{Note:}&#1
+\end{tabular}
+%\vspace{-12pt}
+}}
+
+% O
+\newcommand{\official}{\hyplink{official}}
+
+%P
+\newcommand\Penalty[1]{\vspace{6pt}{\small \textbf{Penalty:~~}#1}\vspace{10pt}}
+\newcommand\President{\hyplink{President}}\newcommand\xPresident{President}
+\newcommand{\prohibiteditem}{\hyplink{prohibited item}}
+\newcommand{\prohibitedarea}{\hyplink{prohibited area}}
+
+%% R
+\newcommand{\race}{\hyplink{race}}
+\newcommand{\RaceDirector}{\hyplink{Race Director}}
+\newcommand{\AssistantRaceDirector}{\hyplink{Assistant Race Director}}
+\newcommand{\Referee}{\hyplink{Referee}}
+\newcommand{\residence}{\hyplink{residence}}
+
+% S
+\newcommand{\scoutingperiod}{\hyplink{scouting period}}
+\newcommand{\scrutineeringarea}{\hyplink{scrutineering area}}
+\newcommand{\spectator}{\hyplink{spectator}}
+\newcommand{\squad}{\hyplink{squad}}
+
+
+
+% T
+\newcommand{\team}{\hyplink{team}}
+\newcommand{\TeamEnvelope}{Team Envelope}
+\newcommand{\Tribunal}{\hyplink{Tribunal}}
+% V
+\newcommand{\ViceCaptain}{\hyplink{Vice-Captain}}
+\newcommand{\VicePresident}{\hyplink{Vice-President}}
+
+% \xCaptain etc see \Captain etc
+% Typesetting parameters
+\hyphenpenalty=10000
+\clubpenalty=9996
+\widowpenalty=9999
+\brokenpenalty=4991
+\predisplaypenalty=10000
+\postdisplaypenalty=1549
+\displaywidowpenalty=160
